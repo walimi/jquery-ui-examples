@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Droppable - Clone functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.5.2.js"></script>
+  <script src="//code.jquery.com/ui/1.8.9/jquery-ui.js"></script>
+  <style>
+	#basket {
+	    height: 100px;
+	    border: 1px solid red;    
+	}
+  </style>
+  <script>
+  	$(function() {
+	    $(".productItem").draggable({
+	        helper: 'clone',
+	        handle: "productItem"
+	    });
+
+	    $("#basket").droppable({
+	        accept: ".productItem",
+	        drop: function(event, ui){
+	            $("<div></div>")
+	                .html(ui.draggable.text())
+	                .appendTo($(this));
+	        }
+	    });
+    });
+  </script>
+</head>
+<body>
+ 
+<h2>Products</h2>
+<div id="list">
+    <div class="productItem">product 1</div>
+    <div class="productItem">product 2</div>
+    <div class="productItem">product 3</div>
+</div>
+
+<hr/>
+
+<h2>Basket</h2>
+<div id="basket">
+
+</div>
+ 
+ 
+</body>
+</html>
